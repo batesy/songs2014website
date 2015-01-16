@@ -1,0 +1,180 @@
+<style type="text/css">
+#right-col {
+  overflow: hidden;
+}
+#overlay {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 25px 0;
+    border: 2px solid black;
+    background-color: #ffffff;
+    width: 100%;
+    height: 80%;
+    z-index: 101;
+    box-shadow: -2px -3px 5px black;
+    font-family: "Roboto";
+    overflow-y: scroll;
+}
+#overlay::after {
+    content: "";
+    background: url(img/endofyear2014.jpg) no-repeat 50%;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    background-size: cover;
+}
+#fade {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    background-color: black;
+    -moz-opacity: 0.7;
+    opacity: .70;
+    filter: alpha(opacity=70);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+span.heading {
+    margin-bottom: 0;
+    margin-top: 15px;
+  }
+  .details-song-title {
+    font-size: 1em;
+    display: block;
+  }
+  .details-song-artist {
+    font-size: 1em;
+    font-style: italic;
+    font-weight: 100;
+    display: block;
+  }
+  .details-play-song {
+    width: 150px;
+    position: relative;
+    left: -15px;
+    top: 10px;
+  }
+  #close-modal {
+    position: absolute;
+top: 0;
+right: 10px;
+font-size: 2.5em;
+  }
+  .no-padding {
+    padding: 0;
+  }
+
+  #details-play-now {
+    width: 100px;
+    margin: 5px 0;
+  }
+
+  .details-contributor {
+    margin-top: 10px;
+  }
+
+  .details-contributor-image {
+    /*margin-top: 25px;*/
+  }
+
+  .selected-by {
+    display: block;
+    font-size: 0.8em;
+  }
+
+  .details-contributor-name {
+    display: block;
+    font-size: 1.4em;
+  }
+
+  .details-contributor-location {
+    display: block;
+    font-weight: 200;
+    font-size: 0.9em;
+  }
+
+  .details-heading {
+    display: inline-block;
+    min-width: 45%;
+    margin-top: 20px;
+    background: #427EC3;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    font-family: "Roboto";
+    font-weight: bold;
+  }
+
+  .details-occupation {
+    display: block;
+  }
+
+  .details-description {
+    display: block;
+  }
+
+  /*Tablet Styles*/
+  @media only screen and (min-width: 40.063em) {
+    #overlay {
+      height: 100%;
+      width: 65%;
+    }
+  }
+</style>
+<div id="overlay" ng-show="display">
+
+    <div class="row">
+      <div class="small-4 columns">
+        <img ng-src="{{song.art}}" alt="">
+      </div>
+      <div class="small-8 columns no-padding">
+        <span class="details-song-title">{{song.title}}</span>
+        <span class="details-song-artist">{{song.artist}}</span>
+        <img src="img/playnow.png" alt="Play Now" id="details-play-now" ng-click="playSong(song)">
+      </div>
+    </div>
+    <div class="row">
+      <div class="details-contributor">
+        <div class="small-6 large-4 columns">
+          <img ng-src="{{song.contributor.image}}" class="details-contributor-image" alt="">
+        </div>
+        <div class="small-6 large-8 columns no-padding">
+          <span class="selected-by">Selected by:</span>
+          <span class="details-contributor-name">{{song.contributor.name}}</span>
+          <span class="details-contributor-location">{{song.contributor.location}}</span>
+        </div>
+        <div class="small-12 columns">
+          <span class="details-heading">What Do You Do?</span>
+          <span class="details-occupation">{{song.contributor.occupation}}</span>
+          <span class="details-heading">What Song Did You Listen To A Lot in 2014?</span>
+          <span class="details-description">{{song.description}}</span>
+        </div>
+      </div>
+    </div>
+
+
+    <a href ng-click="close()" id="close-modal"><i class="fa fa-close"></i></a>
+
+
+
+    <!-- <div class="row">
+    <div class="small-5 medium-4 large-3 columns">
+      <img ng-src="{{vm.details.art}}" alt="">
+    </div>
+    <div class="small-7 medium-8 large-9 columns">
+      <span class="details-song-title">
+        {{vm.details.title}}
+      </span>
+      <span class="details-song-artist">
+        {{vm.details.artist}}
+      </span>
+      <img src="img/playnow.png" alt="" class="details-play-song" ng-click="vm.playSong(vm.details)">
+    </div> -->
+</div>
+<div id="fade" ng-show="display"></div>

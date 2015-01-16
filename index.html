@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Songs We Listened To A Lot In 2014</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <link rel="stylesheet" href="scss/app.css">
+  <link rel="stylesheet" href="scss/mobile.css">
+  <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,500' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div id="main-wrapper" class="row">
+    <div class="small-12 columns" id="left-col">
+      <div id="header">
+        <h1>Songs We Listened To A Lot In 2014</h1>
+      </div>
+      <div id="player" ng-controller="PlayerController as vm">
+        <div id="youtube-wrapper" >
+            <div id="youtube-hider" ng-show="vm.showYoutubePlayer">
+              <div id="youtube-player"></div>
+            </div>
+        </div>
+        <div id="now-playing">
+          <span id="now-playing-title">{{ vm.currentSong.title }}</span>
+          <span id="now-playing-artist">{{ vm.currentSong.artist }}</span>
+        </div>
+        <div id="player-controls">
+          <span id="previous-song" ng-click="vm.playPrevious()"><i class="fa fa-fast-backward"></i></span>
+          <span id="play-button" ng-click="vm.play()" ng-show="vm.player.status !== 'playing'"><i class="fa fa-play"></i></span>
+          <span id="pause-button" ng-click="vm.pause()" ng-show="vm.player.status == 'playing'"><i class="fa fa-pause"></i></span>
+          <span id="next-song" ng-click="vm.playNext()"><i class="fa fa-fast-forward"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="small-12 columns" id="right-col">
+      <div ng-view></div>
+    </div>
+    <div class="small-12 columns" id="footer">
+      <div class="small-12 columns">
+        <p>SongsWeListenedTo.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="js/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="songs/songs.js"></script>
+  <script src="player/player.js"></script>
+  <script src="player/songDetails.js"></script>
+  <script src="services/playerService.js"></script>
+  <script src="services/detailsService.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+  <script src="//connect.soundcloud.com/sdk.js"></script>
+  <script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
+</body>
+</html>

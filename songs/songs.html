@@ -1,0 +1,79 @@
+
+  <!-- <div class="small-12 columns">
+    <div class="heading">The Mix</div>
+  </div> -->
+  <!-- <div class="small-12 large-6 columns mix">
+    <div class="mix-title">
+      <span id="artists">Skratch Bastid & Cosmo Baker's</span>
+      <span id="title">Songs We Listened To A Lot In 2014</span>
+      <img src="img/iu-2.jpeg" alt="" id="mixtape-artwork">
+      <img src="img/playnow.png" alt="" id="play-now">
+    </div>
+  </div> -->
+<div class="mixtape">
+  <div class="small-12 column">
+    <div class="heading">The Mix</div>
+  </div>
+  <div class="small-12 large-6 column">
+    <img src="img/endofyear2014.jpg" alt="">
+  </div>
+  <div class="small-12 large-6 column">
+    <p>A 2 hour end of year DJ mix featuring the songs we listened to the most in 2014. What else do we want to say?</p>
+    <div id="play-now-button">
+      <img src="img/playnow.png" alt="Play Now">
+    </div>
+  </div>
+
+</div>
+
+
+<div class="songs">
+    <div class="small-12 column">
+      <div class="heading">Songs Our Friends Listened To</div>
+    </div>
+    <div class="small-12 medium-6 large-4 column song-listing" ng-repeat="song in vm.songs" ng-click="vm.showDetails(song)">
+      <div class="artwork" ng-style="{'background-image':'url({{song.art}})'}">
+        <div ng-style="{'background-image':'url({{song.contributor.image}})'}" alt="" class="contributor-image"></div>
+      </div>
+      <div class="contributor-name">
+          {{ song.contributor.name }}'s Pick
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="disabled-overlay" ng-class="{active: vm.showingDetails}"></div>
+<div class="song-details" ng-show="vm.showingDetails == true">
+  <div class="row">
+    <div class="small-5 medium-4 large-3 columns">
+      <img ng-src="{{vm.details.art}}" alt="">
+    </div>
+    <div class="small-7 medium-8 large-9 columns">
+      <span class="details-song-title">
+        {{vm.details.title}}
+      </span>
+      <span class="details-song-artist">
+        {{vm.details.artist}}
+      </span>
+      <img src="img/playnow.png" alt="" class="details-play-song" ng-click="vm.playSong(vm.details)">
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <span class="heading">Who Are You?</span>
+      <span class="response">{{vm.details.contributor.name}}</span>
+      <span class="heading">Where Are You?</span>
+      <span class="response">{{vm.details.contributor.location}}</span>
+      <span class="heading">What Do You Do?</span>
+      <span class="response">{{vm.details.contributor.occupation}}</span>
+      <span class="heading">What Song Did You Listen To A Lot In 2014?</span>
+      <span class="response">{{vm.details.description}}</span>
+    </div>
+  </div>
+  <div id="close-details">
+    <a ng-click="vm.hideDetails()">X</a>
+  </div>
+</div>
+
+
+
